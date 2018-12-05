@@ -86,6 +86,28 @@ class LinkedList
 
 		return false;
 	}
+
+	public function insertBefore(string $data = null, string $query = null)
+	{
+		$newNode = new ListNode($data);
+
+		if ($this->firstNode) {
+			$previous = null;
+			$currentNode = $this->firstNode;
+			while ($currentNode !== null) {
+				if ($currentNode->data === $query) {
+					$newNode->next = $currentNode;
+					$previous->next = $newNode;
+					$this->totalNode++;
+
+					break;
+				}
+
+				$previous = $currentNode;
+				$currentNode = $currentNode->next;
+			}
+		}
+	}
 }
 
 $bookTitles = new LinkedList;
