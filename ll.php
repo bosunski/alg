@@ -15,7 +15,11 @@ class ListNode
 	}
 }
 
-class LinkedList {
+class LinkedList
+{
+	/**
+	 * @var ListNode
+	 */
 	private $firstNode = null;
 	private $totalNode = null;
 
@@ -47,6 +51,25 @@ class LinkedList {
 			echo $currentNode->data . PHP_EOL;
 			$currentNode = $currentNode->next;
 		}
+	}
+
+	public function insertAtFirst(string $data)
+	{
+		$newNode = new ListNode($data);
+		if ($this->firstNode === null) {
+			$this->firstNode = &$newNode;
+		} else {
+			// Create a copy of the first node
+			$currentFirstNode = $this->firstNode;
+			// Overwrite with the new Node
+			$this->firstNode = &$newNode;
+			// Assign the copy as the next of the new first node
+			$newNode->next = $currentFirstNode;
+		}
+
+		$this->totalNode++;
+
+		return true;
 	}
 }
 
