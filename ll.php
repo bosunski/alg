@@ -71,6 +71,21 @@ class LinkedList
 
 		return true;
 	}
+
+	public function search(string $data = null)
+	{
+		if ($this->totalNode) {
+			$currentNode = $this->firstNode;
+			while ($currentNode !== null) {
+				if ($currentNode->data === $data) {
+					return $currentNode;
+				}
+				$currentNode = $currentNode->next;
+			}
+		}
+
+		return false;
+	}
 }
 
 $bookTitles = new LinkedList;
