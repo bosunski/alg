@@ -108,7 +108,132 @@ class LinkedList
 			}
 		}
 	}
+
+	public function insertAfter(string $data = null, string $query = null)
+	{
+		$newNode = new ListNode($data);
+
+		if ($this->firstNode) {
+			$nextNode = null;
+			$currentNode = $this->firstNode;
+
+			while ($currentNode !== null) {
+				if ($currentNode->data === $query) {
+					if ($nextNode !== null) {
+						$newNode->next = $nextNode;
+					}
+
+					$currentNode->next = $newNode;
+					$this->totalNode++;
+					break;
+				}
+
+				$currentNode = $currentNode->next;
+				$nextNode = $currentNode->next;
+			}
+		}
+	}
+
+	public function deleteFirst()
+	{
+		if ($this->firstNode !== null) {
+			if ($this->firstNode->next !== null) {
+				$this->firstNode = $this->firstNode->next;
+			} else {
+				$this->firstNode = null;
+			}
+			$this->totalNode--;
+
+			return true;
+		}
+
+		return false;
+	}
+
+	public function deleteLast()
+	{
+		if ($this->firstNode !== null) {
+			$currentNode = $this->firstNode;
+
+			if ($currentNode->next === null) {
+				$this->firstNode = null;
+			} else {
+				$previousNode = null;
+
+				while ($currentNode->next !== null) {
+					$previousNode = $currentNode;
+					$currentNode = $currentNode->next;
+				}
+
+				$previousNode->next = null;
+				$this->totalNode--;
+
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public function delete(string $query = null)
+	{
+		if ($this->firstNode) {
+			$previousNode = null;
+			$currentNode = $this->firstNode;
+			while ($currentNode !== null) {
+				if ($currentNode->data === $query) {
+					if ($currentNode->next === null) {
+						$previousNode->next = null;
+					} else {
+						$previousNode->next = $currentNode;
+					}
+
+					$this->totalNode--;
+					break;
+				}
+
+				$previousNode = $currentNode;
+				$currentNode = $currentNode->next;
+			}
+		}
+	}
+
+	public function reverse()
+	{
+		if ($this->firstNode !== null) {
+			if ($this->firstNode->next !== null) {
+				$reversedList = null;
+				$next = null;
+				$currentNode = $this->firstNode;
+				while ($currentNode !== null) {
+					$next = $currentNode->next;
+					$currentNode->next = $reversedList;
+					$reversedList = $currentNode;
+					$currentNode = $next;
+				}
+
+				$this->firstNode = $reversedList;
+			}
+		}
+	}
+
+	public function getNthNode(int $n = 0)
+	{
+		$count = 1;
+		if ($this->firstNode !== null) {
+			$currentNode = $this->firstNode;
+			while ($currentNode !== null) {
+				if ($count === $n) {
+					return $currentNode;
+				}
+
+				$count++;
+				$currentNode = $currentNode->next;
+			}
+		}
+	}
 }
+
 
 $bookTitles = new LinkedList;
 $bookTitles->insert('Intro to CS');
