@@ -4,11 +4,11 @@ class ListNode
 	public $data = null;
 	public $next = null;
 
-	/**
-	 * ListNode constructor.
-	 *
-	 * @param string $data
-	 */
+    /**
+     * ListNode constructor.
+     *
+     * @param string $data
+     */
 	public function __construct(string $data)
 	{
 		$this->data = $data;
