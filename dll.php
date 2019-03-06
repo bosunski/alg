@@ -79,7 +79,7 @@ class DoublyLinkedList
         }
     }
 
-    public function insertAfter(string $Data = null, string $query = null)
+    public function insertAfter(string $data = null, string $query = null)
     {
         $newNode = new ListNode($data);
 
