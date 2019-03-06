@@ -1,4 +1,5 @@
 <?php
+
 class MyPQ extends SplPriorityQueue
 {
     public function compare($priority1, $priority2)
