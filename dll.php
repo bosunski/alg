@@ -171,4 +171,15 @@ class DoublyLinkedList
             }
         }
     }
+
+    public function displayForward()
+    {
+        echo "Total Lists:", $this->totalNode, PHP_EOL;
+
+        $currentNode = $this->firstNode;
+        while ($currentNode !== null) {
+            echo $currentNode->data, PHP_EOL;
+            $currentNode = $currentNode->next;
+        }
+    }
 }
