@@ -55,4 +55,27 @@ class DoublyLinkedList
 
         return true;
     }
+
+    public function insertBefore(string $data = null, string $query = null)
+    {
+        $newNode = new ListNode($data);
+
+        if ($this->firstNode) {
+            $previous = null;
+            $currentFirstNode = $this->firstNode;
+
+            while ($currentFirstNode !== null) {
+                if ($currentFirstNode->data === $query) {
+                    $newNode->next = $currentFirstNode;
+                    $currentFirstNode->prev = $newNode;
+                    $newNode->prev = $previous;
+                    $this->totalNode++;
+
+                    break;
+                }
+                $previous = $currentFirstNode;
+                $currentFirstNode = $currentFirstNode->next;
+            }
+        }
+    }
 }
