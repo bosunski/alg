@@ -1,6 +1,6 @@
 <?php
 
-function expressionMatcher(string $expression): bool
+function expressionChecker(string $expression): bool
 {
     $valid = true;
     $stack = new SplStack();
@@ -46,7 +46,7 @@ $expressions[] = "5 * 8 * 9 / (3 * 2) )";
 $expressions[] = "[{ (2 * 7) + (15 - 3) ]";
 
 foreach ($expressions as $expression) {
-    $valid = expressionMatcher($expression);
+    $valid = expressionChecker($expression);
 
     if ($valid)
         echo "Expression is Valid", PHP_EOL;
