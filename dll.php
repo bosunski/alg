@@ -108,4 +108,21 @@ class DoublyLinkedList
             }
         }
     }
+
+    public function deleteFirst()
+    {
+        if ($this->firstNode !== null) {
+            if ($this->firstNode->next !== null) {
+                $this->firstNode = $this->firstNode->next;
+            } else {
+                $this->firstNode = null;
+            }
+
+            $this->totalNode--;
+
+            return true;
+        }
+
+        return false;
+    }
 }
