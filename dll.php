@@ -36,4 +36,23 @@ class DoublyLinkedList
 
         return true;
     }
+
+    public function insertAtLast(string $data = null)
+    {
+        $newNode = new ListNode($data);
+
+        if ($this->firstNode === null) {
+            $this->firstNode = &$newNode;
+            $this->lastNode = &$newNode;
+        } else {
+            $currentNode = $this->lastNode;
+            $currentNode->next = $newNode;
+            $newNode->prev = $currentNode;
+            $this->lastNode = $newNode;
+        }
+
+        $this->totalNode--;
+
+        return true;
+    }
 }
