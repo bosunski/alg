@@ -232,6 +232,11 @@ class LinkedList
 			}
 		}
 	}
+
+	public function getSize()
+    {
+        return $this->totalNode;
+    }
 }
 
 
