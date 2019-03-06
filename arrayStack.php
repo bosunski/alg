@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Interface Stack
+ *
+ * Access: O(n) - TC
+ * Search: O(n) - TC
+ * Space Complexity - O(n)
+ */
 interface Stack
 {
     public function push(string $newItem);
@@ -22,6 +29,7 @@ class Books implements Stack
         $this->stack = [];
     }
 
+    // O(1) - TC
     public function push(string $newItem)
     {
         if (count($this->stack) === $this->limit) {
@@ -31,6 +39,7 @@ class Books implements Stack
         }
     }
 
+    // O(1) - TC
     public function pop()
     {
         if ($this->isEmpty()) {
@@ -40,11 +49,13 @@ class Books implements Stack
         }
     }
 
+    // O(1) - TC
     public function top()
     {
         return end($this->stack);
     }
 
+    // O(1) - TC
     public function isEmpty()
     {
         return empty($this->stack);
