@@ -12,12 +12,29 @@ class ListNode
     }
 }
 
+/**
+ * Class DoublyLinkedList
+ *
+ * Search:
+ **** WCTC: O(n)
+ **** ACTC: O(n)
+ * Access:
+ **** WCTC: O(n)
+ **** ACTC: O(n)
+ */
 class DoublyLinkedList
 {
     private $firstNode = null;
     private $lastNode = null;
     private $totalNode = null;
 
+    /**
+     * WCTC: O(1)
+     * ACTC: O(1)
+     *
+     * @param string|null $data
+     * @return bool
+     */
     public function insertAtFirst(string $data = null)
     {
         $newNode = new ListNode($data);
@@ -37,6 +54,11 @@ class DoublyLinkedList
         return true;
     }
 
+    /**
+     *
+     * @param string|null $data
+     * @return bool
+     */
     public function insertAtLast(string $data = null)
     {
         $newNode = new ListNode($data);
@@ -109,6 +131,11 @@ class DoublyLinkedList
         }
     }
 
+    /**
+     * WCTC: O(1)
+     * ACTC: O(1)
+     * @return bool
+     */
     public function deleteFirst()
     {
         if ($this->firstNode !== null) {
