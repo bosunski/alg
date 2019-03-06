@@ -147,4 +147,28 @@ class DoublyLinkedList
 
         return false;
     }
+
+    public function delete(string $query = null)
+    {
+        if ($this->firstNode) {
+            $previous = null;
+            $currentNode = $this->firstNode;
+            while ($currentNode !== null) {
+                if ($currentNode->data === $query) {
+                    if ($currentNode->next === null) {
+                        $previous->next = null;
+                    } else {
+                        $previous->next = $currentNode->next;
+                        $currentNode->next->prev = $previous;
+                    }
+
+                    $this->totalNode--;
+
+                    break;
+                }
+                $previous = $currentNode;
+                $currentNode = $currentNode->next;
+            }
+        }
+    }
 }
