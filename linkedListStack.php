@@ -1,4 +1,6 @@
 <?php
+include_once "StackInterface.php";
+include_once "ll.php";
 
 class BookList implements Stack
 {
@@ -34,4 +36,17 @@ class BookList implements Stack
     {
         return $this->stack->getSize() == 0;
     }
+}
+
+try {
+    $programmingBooks = new BookList();
+    $programmingBooks->push("Introduction to PHP7");
+    $programmingBooks->push("Mastering Java");
+    $programmingBooks->push("MySql Workbench tutorial");
+
+    echo $programmingBooks->pop(), PHP_EOL;
+    echo $programmingBooks->pop(), PHP_EOL;
+    echo $programmingBooks->top(), PHP_EOL;
+} catch (Exception $exception) {
+    echo $exception->getMessage();
 }
