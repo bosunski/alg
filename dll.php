@@ -125,4 +125,26 @@ class DoublyLinkedList
 
         return false;
     }
+
+    public function deleteLast()
+    {
+        if ($this->lastNode !== null) {
+            $currentNode = $this->lastNode;
+
+            if ($currentNode->prev === null) {
+                $this->firstNode = null;
+                $this->lastNode = null;
+            } else {
+                $previousNode = $currentNode->prev;
+                $this->lastNode = $previousNode;
+                $previousNode->next = null;
+
+                $this->totalNode--;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
