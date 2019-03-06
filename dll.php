@@ -78,4 +78,34 @@ class DoublyLinkedList
             }
         }
     }
+
+    public function insertAfter(string $Data = null, string $query = null)
+    {
+        $newNode = new ListNode($data);
+
+        if ($this->firstNode) {
+            $nextNode = null;
+            $currentNode = $this->firstNode;
+            while ($currentNode !== null) {
+                if ($currentNode->data === $query) {
+                    if ($nextNode !== null) {
+                        $newNode->next = $nextNode;
+                    }
+                    if ($currentNode === $this->lastNode) {
+                        $this->lastNode = $newNode;
+                    }
+
+                    $currentNode->next = $newNode;
+                    $nextNode->prev = $newNode;
+                    $newNode->prev = $currentNode;
+                    $this->totalNode++;
+
+                    break;
+                }
+
+                $currentNode = $currentNode->next;
+                $nextNode = $currentNode->next;
+            }
+        }
+    }
 }
