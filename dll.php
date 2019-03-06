@@ -182,4 +182,16 @@ class DoublyLinkedList
             $currentNode = $currentNode->next;
         }
     }
+
+    public function displayBackward()
+    {
+        echo "Total Lists:", $this->totalNode, PHP_EOL;
+
+        $currentNode = $this->lastNode;
+        while ($currentNode !== null) {
+            echo  $currentNode->data, PHP_EOL;
+
+            $currentNode = $currentNode->prev;
+        }
+    }
 }
